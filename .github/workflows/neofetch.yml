@@ -1,0 +1,14 @@
+name: Show System Info
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  show-info:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Show system info
+      uses: mochaaP/neofetch-action@master
