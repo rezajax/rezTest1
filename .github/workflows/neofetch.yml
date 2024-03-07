@@ -8,12 +8,28 @@ on:
 
 jobs:
   show-info:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
     - name: Show system info
       uses: mochaaP/neofetch-action@master
+      if: matrix.os == 'ubuntu-latest'  # Only run neofetch for Ubuntu
 
-    - name: Display Ubuntu version
+    - name: Display OS version
+      if: matrix.os == 'ubuntu-latest'
       run: |
         lsb_release -a
+
+    - name: Display OS version
+      if: matrix.os == 'windows-latest'
+      run: |
+        ver
+
+    - name: Display OS version
+      if: matrix.os == 'macos-latest'
+      run: |
+        sw_vers -productVersion
