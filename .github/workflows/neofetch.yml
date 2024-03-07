@@ -27,7 +27,7 @@ jobs:
     - name: Display OS version
       if: matrix.os == 'windows-latest'
       run: |
-        ver
+        systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
 
     - name: Display OS version
       if: matrix.os == 'macos-latest'
