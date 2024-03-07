@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  workflow_dispatch: # Manual trigger
 
 jobs:
   show-info:
@@ -15,3 +13,7 @@ jobs:
     steps:
     - name: Show system info
       uses: mochaaP/neofetch-action@master
+
+    - name: Display Ubuntu version
+      run: |
+        lsb_release -a
